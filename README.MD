@@ -1,4 +1,5 @@
 SCRIPT NODE.JS PARA AUTOMAÇÃO DE FECHAMANDO DE CHAMADO DE UM SISTEMA ESPECIFICO
+
 Bibliotecas instaladas
 - Cheerio
 - Puppeteer
