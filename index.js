@@ -1,24 +1,5 @@
 const puppeteer = require("puppeteer");
 require("dotenv").config();
-/**
- * LIB's instaladas
- * cheerio
- * puppeteer
- * axios
- * npm start
- */
-//await page.click('table[id="grid_1"] tr:nth-child(1)', { clickCount: 2 }); ABRIR O CHAMADO
-/*
-  let chamadoASerFechado = await page.evaluate(() => {
-    let chamadoAserfechado;
-    document
-      .querySelectorAll(
-        'table[id="grid_1"] tr:nth-child(1) td[abbr="cliente.razao"]'
-      )
-      .forEach((tite) => (chamadoAserfechado = tite.innerText));
-    return chamadoAserfechado;
-  });
-  */
 
 (async () => {
   console.log("iniciou prossesamento");
