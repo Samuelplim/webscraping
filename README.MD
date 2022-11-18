@@ -16,6 +16,7 @@ PASSWORD
 **Comandos para execultar o projeto**
 Instalar as dependências do projeto
 `npm install`
+
 Para iniciar o projeto
 `npm start`
 ou
