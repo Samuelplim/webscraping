@@ -5,11 +5,14 @@ Bibliotecas instaladas
 - Puppeteer
 - Axios
 - Dotenv
+
+
 **Configure o aquivo .env**
 Com as variáveis
 URL
 EMAIL
 PASSWORD
+
 **Comandos para execultar o projeto**
 Instalar as dependências do projeto
 `npm install`
