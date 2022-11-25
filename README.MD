@@ -1,22 +1,23 @@
-SCRIPT NODE.JS PARA AUTOMAÇÃO DE FECHAMANDO DE CHAMADO DE UM SISTEMA ESPECIFICO
-
+SCRIPT NODE.JS PARA AUTOMAÇÃO DE FECHAMENTO DE CHAMADO DE UM SISTEMA ESPECÍFICO
+ 
 Bibliotecas instaladas
 - Cheerio
 - Puppeteer
 - Axios
 - Dotenv
-
-
-**Configure o aquivo .env**
+ 
+ 
+**Configure o arquivo .env**
 Com as variáveis
 URL
 EMAIL
 PASSWORD
-
-**Comandos para execultar o projeto**
+você pode verificar o modelo no arquivo: env.example
+ 
+**Comandos para executar o projeto**
 Instalar as dependências do projeto
 `npm install`
-
+ 
 Para iniciar o projeto
 `npm start`
 ou
