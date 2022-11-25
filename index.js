@@ -2,7 +2,6 @@ const puppeteer = require("puppeteer");
 require("dotenv").config();
 
 (async () => {
-  console.log("iniciou prossesamento");
   const browser = await puppeteer.launch({
     headless: false,
     defaultViewport: {
@@ -13,7 +12,6 @@ require("dotenv").config();
 
   const page = await browser.newPage();
   await page.goto(process.env.URL_LINK);
-  console.log("page UP");
 
   await page.waitForSelector('input[name="email"]');
   await page.type('input[name="email"]', process.env.EMAIL, { delay: 100 });
@@ -23,7 +21,6 @@ require("dotenv").config();
 
   await page.keyboard.press("Enter");
   await page.keyboard.press("Enter");
-  console.log("Acessando...");
 
   await page.waitForSelector('div[id="menu76420e3e2ec10bca79d6bfcc6356354c"]');
   await page.click('div[id="menu76420e3e2ec10bca79d6bfcc6356354c"]');
@@ -76,5 +73,4 @@ require("dotenv").config();
   await page.screenshot({ path: "result.png" });
   await page.click('i[class="fa fa-sign-out fa-lg"]'); //deslogar
   await browser.close();
-  console.log("Finalizado");
 })();
