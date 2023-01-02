@@ -4,10 +4,6 @@ require("dotenv").config();
 (async () => {
   const browser = await puppeteer.launch({
     headless: false,
-    defaultViewport: {
-      width: 1000,
-      height: 900,
-    },
   });
 
   const page = await browser.newPage();
@@ -19,13 +15,25 @@ require("dotenv").config();
 
   await page.type('input[name="senha"]', process.env.PASSWORD, { delay: 100 });
 
-  await page.keyboard.press("Enter");
-  await page.keyboard.press("Enter");
+  await page.click('button[id="entrar"]');
+  await page.waitForTimeout(2000);
 
-  await page.waitForSelector('div[id="menu76420e3e2ec10bca79d6bfcc6356354c"]');
+  let checarseentrou = await page.evaluate(() => {
+    let res = document.querySelectorAll(
+      'div[id="menu76420e3e2ec10bca79d6bfcc6356354c"]'
+    );
+    if (res.length === 0) {
+      return false;
+    }
+    return true;
+  });
+  if (checarseentrou === false) {
+    await page.click('button[id="entrar"]');
+  }
+  await page.waitForTimeout(5000);
   await page.click('div[id="menu76420e3e2ec10bca79d6bfcc6356354c"]');
 
-  await page.waitForTimeout(2000); //obrigadorio
+  await page.waitForTimeout(2000);
   await page.click(
     'div[id="grupo_menu76420e3e2ec10bca79d6bfcc6356354c"] li:nth-child(3) a:nth-child(1)'
   );
@@ -71,6 +79,6 @@ require("dotenv").config();
     });
   }
   await page.screenshot({ path: "result.png" });
-  await page.click('i[class="fa fa-sign-out fa-lg"]'); //deslogar
+  await page.click('i[class="fa fa-sign-out fa-lg"]');
   await browser.close();
 })();
