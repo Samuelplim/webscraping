@@ -10,10 +10,10 @@ require("dotenv").config();
   await page.goto(process.env.URL_LINK);
 
   await page.waitForSelector('input[name="email"]');
-  await page.type('input[name="email"]', process.env.EMAIL, { delay: 100 });
+  await page.type('input[name="email"]', process.env.EMAIL, { delay: 10 });
   await page.waitForSelector('input[name="senha"]');
 
-  await page.type('input[name="senha"]', process.env.PASSWORD, { delay: 100 });
+  await page.type('input[name="senha"]', process.env.PASSWORD, { delay: 10 });
 
   await page.click('button[id="entrar"]');
   await page.waitForTimeout(2000);
@@ -40,7 +40,7 @@ require("dotenv").config();
 
   await page.waitForTimeout(2000);
   await page.type('input[name="departamento"]', "SUPORTE N", {
-    delay: 100,
+    delay: 10,
   });
   await page.click('input[id="origem_H"]');
   await page.click('input[value="OK"]');
@@ -62,7 +62,7 @@ require("dotenv").config();
         'textarea[name="mensagem"]',
         "FINALIZADO POR TEMPO DE ABERTURA",
         {
-          delay: 100,
+          delay: 10,
         }
       );
       await page.select('select[id="su_status"]', "S");
