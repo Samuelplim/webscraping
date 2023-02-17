@@ -37,7 +37,7 @@ require("dotenv").config();
 
   await page.waitForTimeout(2000);
   await page.click(
-    'div[id="grupo_menu76420e3e2ec10bca79d6bfcc6356354c"] li:nth-child(3) a:nth-child(1)'
+    'div[id="grupo_menu76420e3e2ec10bca79d6bfcc6356354c"] li:nth-child(2) a:nth-child(1)'
   );
 
   await page.waitForTimeout(2000);
