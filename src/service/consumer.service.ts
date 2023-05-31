@@ -10,6 +10,8 @@ class consumerServices {
   msSmall = 2000;
   msMeddium = 3000;
   msLarge = 5000;
+  msLogin = 10000;
+  msg = "FINALIZADO POR TEMPO DE ABERTURA";
 
   private sleep(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -27,6 +29,8 @@ class consumerServices {
     await this.page.goto(this.url);
     await this.login();
     await this.abrirPainelDeAtendimentos();
+    await this.fecharAtendimentos();
+    console.log("Parece que os atendimentos acabaram");
   }
 
   async login() {
@@ -44,7 +48,7 @@ class consumerServices {
     );
     await this.page.click(consumerInterface.btnEntrar);
 
-    await this.sleep(this.msLarge);
+    await this.sleep(this.msLogin);
     const checkentro = await this.checarSeEntrou();
     if (!checkentro) {
       await this.page.click(consumerInterface.btnEntrar);
@@ -68,6 +72,49 @@ class consumerServices {
     await this.sleep(this.msLarge);
     await this.page.click(consumerInterface.iUltimo);
     await this.sleep(this.msLarge);
+  }
+
+  async fecharAtendimentos() {
+    let temAtendimento = await this.checarSeTemAtendimento();
+    if (temAtendimento) {
+      await this.page.click(consumerInterface.btnPrint);
+      await this.page.click(consumerInterface.liPrint);
+      await this.sleep(this.msSmall);
+      await this.page.type('textarea[name="mensagem"]', this.msg, {
+        delay: 10,
+      });
+      await this.page.select(consumerInterface.iptStatus, "S");
+      await this.page.click(consumerInterface.btnAlt);
+      await this.sleep(this.msSmall);
+      await this.page.click(consumerInterface.iAtual);
+      await this.sleep(this.msSmall);
+      const temAtendimentoPosfechar = await this.checarSeTemAtendimento();
+      if (temAtendimentoPosfechar) {
+        await this.fecharAtendimentos();
+      } else {
+        await this.page.click(consumerInterface.iUltimo);
+        await this.sleep(this.msLarge);
+        const temAtendimentoPosfechar = await this.checarSeTemAtendimento();
+        if (temAtendimentoPosfechar) {
+          await this.fecharAtendimentos();
+        }
+      }
+    } else {
+      await this.sleep(this.msLarge);
+      const temAtendimentoPosfechar = await this.checarSeTemAtendimento();
+      if (temAtendimentoPosfechar) {
+        await this.fecharAtendimentos();
+      }
+    }
+  }
+
+  async checarSeTemAtendimento(): Promise<boolean> {
+    const temAtendimento = await this.page.evaluate(() => {
+      return document.querySelectorAll('table[id="grid_1"] tr').length > 0
+        ? true
+        : false;
+    });
+    return temAtendimento;
   }
 
   async checarSeEntrou(): Promise<boolean> {

@@ -15,6 +15,6 @@ export const consumerInterface = {
   textArea: 'textarea[name="mensagem"]',
   iptStatus: 'select[id="su_status"]',
   btnAlt: 'button[title="Alt+S"]',
-  btnAtual: 'i[title="Atualizar"]',
+  iAtual: 'i[title="Atualizar"]',
   btnExit: 'i[class="fa fa-sign-out fa-lg"]',
 };
