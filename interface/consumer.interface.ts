@@ -1,0 +1,21 @@
+export const consumerInterface = {
+  iptEmail: 'input[name="email"]',
+  iptSenha: 'input[name="senha"]',
+  btnEntrar: 'button[id="entrar"]',
+  menuID: 'div[id="menu76420e3e2ec10bca79d6bfcc6356354c"]',
+  aMenuID:
+    'div[id="grupo_menu76420e3e2ec10bca79d6bfcc6356354c"] li:nth-child(2) a:nth-child(1)',
+  iptDepartament: 'input[name="departamento"]',
+  iptOrigem: 'input[id="origem_H"]',
+  iptOK: 'input[value="OK"]',
+  iUltimo: 'i[title="Último"]',
+  lines: 'table[id="grid_1"] tr',
+  btnPrint: 'nav[id="print_form"]',
+  liPrint: 'nav#print_form ul li:nth-child(2)',
+  //liPrint: 'ul[class="menuTree"] li:nth-child(2)',
+  textArea: 'textarea[name="mensagem"]',
+  iptStatus: 'select[id="su_status"]',
+  btnAlt: 'button[title="Alt+S"]',
+  iAtual: 'i[title="Atualizar"]',
+  btnExit: 'i[class="fa fa-sign-out fa-lg"]',
+};
